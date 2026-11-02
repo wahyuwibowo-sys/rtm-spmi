@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "DocumentPhoto": {
+      "title": "DocumentPhoto",
+      "description": "Foto bukti fisik dokumen SPMI dan rapat RTM SMKN 1 Sidayu",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "uploadedAt": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "imageUrl"
+      ]
+    }
+  },
+  "firestore": {
+    "/documentPhotos/{photoId}": {
+      "schema": "DocumentPhoto",
+      "description": "Koleksi foto dokumen RTM dan bukti fisik penjaminan mutu"
+    }
+  }
+}

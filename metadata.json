@@ -1,0 +1,6 @@
+{
+  "name": "RTM SPMI 2026 - SMK Negeri 1 Sidayu",
+  "description": "Aplikasi Presentasi Interaktif Rapat Tinjauan Manajemen (RTM) SPMI 2026 SMK Negeri 1 Sidayu Gresik dengan 7 slide ringkas, gauge chart mutu, tren penurunan, fishbone diagram, action plan matrix, dan target 2027.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
