@@ -13,7 +13,8 @@ import {
   TARGET_ROADMAP,
 } from '../data/rtmData.ts';
 import { SCHOOL_LOGO_DATA_URL } from '../assets/logoBase64.ts';
-import { Printer, Download, X, FileText, CheckCircle2 } from 'lucide-react';
+import { Printer, Download, X, FileText, CheckCircle2, FileDown } from 'lucide-react';
+import { exportRtmToPptx } from '../utils/exportPptx.ts';
 
 interface PrintHandoutViewProps {
   isOpen: boolean;
@@ -306,6 +307,21 @@ export const PrintHandoutView: React.FC<PrintHandoutViewProps> = ({ isOpen, onCl
 
               <div className="flex items-center gap-2">
                 <button
+                  onClick={async () => {
+                    try {
+                      await exportRtmToPptx();
+                    } catch (e) {
+                      console.error(e);
+                    }
+                  }}
+                  title="Unduh File Presentasi PowerPoint (.pptx)"
+                  className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold text-xs transition-all shadow-md flex items-center gap-1.5"
+                >
+                  <FileDown className="w-3.5 h-3.5" />
+                  <span>Simpan Slide PPT</span>
+                </button>
+
+                <button
                   onClick={handlePrint}
                   className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-all shadow-md flex items-center gap-1.5"
                 >
@@ -319,7 +335,7 @@ export const PrintHandoutView: React.FC<PrintHandoutViewProps> = ({ isOpen, onCl
                   className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition-colors flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Unduh File Dokumen</span>
+                  <span className="hidden sm:inline">Unduh Dokumen</span>
                 </button>
 
                 <button

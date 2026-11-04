@@ -14,8 +14,10 @@ import {
   Pause,
   RotateCcw,
   Clock,
+  FileDown,
 } from 'lucide-react';
 import { SLIDES } from '../data/rtmData.ts';
+import { exportRtmToPptx } from '../utils/exportPptx.ts';
 
 interface PresentationControllerProps {
   currentSlide: number;
@@ -201,6 +203,21 @@ export const PresentationController: React.FC<PresentationControllerProps> = ({
             className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
           >
             {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+          </button>
+
+          <button
+            onClick={async () => {
+              try {
+                await exportRtmToPptx();
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            title="Download Presentasi Slide PPT (.pptx)"
+            className="px-2.5 py-1 text-xs font-bold rounded-lg bg-amber-600/30 hover:bg-amber-600 text-amber-300 hover:text-white border border-amber-500/40 transition-colors flex items-center gap-1.5"
+          >
+            <FileDown className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Simpan PPT</span>
           </button>
         </div>
 

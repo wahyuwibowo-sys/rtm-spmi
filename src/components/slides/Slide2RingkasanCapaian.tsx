@@ -171,45 +171,45 @@ export const Slide2RingkasanCapaian: React.FC = () => {
       {/* Slide Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div>
-          <div className="text-xs uppercase tracking-widest text-blue-400 font-semibold flex items-center gap-2">
+          <div className="text-xs sm:text-sm uppercase tracking-widest text-blue-400 font-bold flex items-center gap-2">
             <span>Slide 02</span>
             <span>·</span>
             <span>Evaluasi Capaian Rapor Mutu</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1">
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-1">
             Ringkasan Capaian Mutu 2026
           </h2>
         </div>
 
-        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
-          <AlertTriangle className="w-4 h-4 text-amber-400" />
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-amber-500/15 border border-amber-500/35 text-amber-200 text-xs sm:text-sm font-bold shadow-sm">
+          <AlertTriangle className="w-5 h-5 text-amber-400" />
           <span>Status: Kategori Baik, namun Perlu Perhatian Penurunan</span>
         </div>
       </div>
 
       {/* 3 KPI Cards with KPI Gauge Charts */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto py-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto py-5">
         {METRIC_INDICATORS.map((metric) => (
           <div
             key={metric.id}
-            className="flex flex-col justify-between p-5 rounded-2xl bg-slate-800/60 border border-slate-700/80 hover:border-slate-600 transition-all shadow-lg"
+            className="flex flex-col justify-between p-6 rounded-2xl bg-slate-800/70 border border-slate-700/90 hover:border-slate-500 transition-all shadow-xl"
           >
             {/* Card Header */}
             <div>
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <span className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider block">
+                  <span className="text-xs sm:text-sm font-bold text-blue-400 uppercase tracking-wider block">
                     Indikator {metric.id === 'link-and-match' ? '01' : metric.id === 'selaras-dunia-kerja' ? '02' : '03'}
                   </span>
-                  <h3 className="text-lg font-bold text-white mt-0.5 leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-black text-white mt-1 leading-snug">
                     {metric.name}
                   </h3>
                 </div>
-                <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 shrink-0">
                   Baik
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-300 mt-2 leading-relaxed">
                 {metric.context}
               </p>
             </div>
@@ -226,13 +226,13 @@ export const Slide2RingkasanCapaian: React.FC = () => {
             </div>
 
             {/* Sub-components / Key Factors */}
-            <div className="pt-3 border-t border-slate-700/50 space-y-1.5 text-[11px]">
-              <span className="text-slate-400 font-medium block">Fokus Penilaian:</span>
-              <ul className="space-y-1 text-slate-300">
+            <div className="pt-3 border-t border-slate-700/60 space-y-2 text-xs sm:text-sm">
+              <span className="text-slate-300 font-bold block">Fokus Penilaian:</span>
+              <ul className="space-y-1.5 text-slate-300">
                 {metric.subFactors.slice(0, 2).map((factor, idx) => (
-                  <li key={idx} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                    <span className="truncate">{factor}</span>
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-400 shrink-0 mt-1.5" />
+                    <span className="font-medium leading-snug">{factor}</span>
                   </li>
                 ))}
               </ul>
@@ -244,27 +244,27 @@ export const Slide2RingkasanCapaian: React.FC = () => {
       {/* Strategic Callout & Presenter Notes */}
       <div className="space-y-3 pt-2">
         {/* Key Takeaway Callout */}
-        <div className="p-3.5 rounded-xl bg-amber-950/30 border border-amber-800/40 flex items-start gap-3 text-xs">
-          <Info className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-          <div className="space-y-0.5">
-            <span className="font-semibold text-amber-300">Catatan Kritis RTM:</span>
-            <p className="text-amber-100/90 leading-relaxed">
+        <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-800/50 flex items-start gap-3.5 text-xs sm:text-sm shadow-md">
+          <Info className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <span className="font-extrabold text-amber-300 text-sm sm:text-base">Catatan Kritis RTM:</span>
+            <p className="text-amber-100/90 leading-relaxed font-normal">
               Meskipun ketiga indikator masih berada di rentang predikat "Baik" (&gt;70 poin), seluruhnya tercatat mengalami <strong>tren penurunan (Link &amp; Match -2,21, Selaras DUDI -0,34, Numerasi -2,22%)</strong>. Evaluasi mendalam diperlukan agar penurunan tidak berlanjut pada rapor tahun berikutnya.
             </p>
           </div>
         </div>
 
         {/* Bottom Presenter Note */}
-        <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2 text-slate-300">
-            <span className="font-semibold text-blue-400 uppercase tracking-wide text-[11px]">
+        <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs sm:text-sm">
+          <div className="flex items-center gap-2.5 text-slate-300">
+            <span className="font-bold text-blue-400 uppercase tracking-wide text-xs sm:text-sm">
               Catatan Presenter:
             </span>
-            <span className="italic text-slate-300">
+            <span className="italic text-slate-200 font-medium">
               "{slide.presenterNote}"
             </span>
           </div>
-          <span className="hidden sm:inline text-[11px] text-slate-400 font-mono">Slide 02 / 07</span>
+          <span className="hidden sm:inline text-xs text-slate-400 font-mono">Slide 02 / 08</span>
         </div>
       </div>
     </div>

@@ -215,27 +215,27 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
       {/* Slide Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div>
-          <div className="text-xs uppercase tracking-widest text-blue-400 font-semibold flex items-center gap-2">
+          <div className="text-xs sm:text-sm uppercase tracking-widest text-blue-400 font-bold flex items-center gap-2">
             <span>Lampiran Eksekutif</span>
             <span>·</span>
             <span>Slide Dokumen &amp; Bukti Fisik RTM</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-1 flex items-center gap-2.5">
-            <FileText className="w-6 h-6 text-blue-400" />
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-1 flex items-center gap-2.5">
+            <FileText className="w-7 h-7 text-blue-400" />
             <span>Dokumentasi Foto Dokumen SPMI</span>
           </h2>
         </div>
 
         {/* Action Controls & Firebase Status */}
-        <div className="flex items-center gap-2.5">
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-950/60 border border-blue-800/50 text-[11px] text-blue-300 font-mono">
-            <Cloud className="w-3.5 h-3.5 text-blue-400" />
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-950/70 border border-blue-800/60 text-xs sm:text-sm text-blue-300 font-mono font-bold">
+            <Cloud className="w-4 h-4 text-blue-400" />
             <span>Firebase Aktif</span>
           </div>
 
           <button
             onClick={() => setShowUploadModal(true)}
-            className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-all shadow-md shadow-blue-600/20 flex items-center gap-1.5"
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm transition-all shadow-md shadow-blue-600/25 flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             <span>Unggah Foto Dokumen</span>
@@ -248,36 +248,36 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto py-4 items-center">
           {/* Left: Large Photo Display Stage */}
           <div className="lg:col-span-8 flex flex-col justify-center">
-            <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 shadow-2xl group flex items-center justify-center max-h-[420px]">
+            <div className="relative rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/80 shadow-2xl group flex items-center justify-center max-h-[440px]">
               <img
                 src={currentDoc.imageUrl}
                 alt={currentDoc.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-auto max-h-[400px] object-contain p-2"
+                className="w-full h-auto max-h-[420px] object-contain p-2"
               />
 
               {/* Top Category Badge */}
               <div className="absolute top-3 left-3 flex items-center gap-2">
-                <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-600/90 text-white backdrop-blur-md shadow-md">
+                <span className="px-3 py-1 rounded-lg text-xs font-bold bg-blue-600/90 text-white backdrop-blur-md shadow-md">
                   {currentDoc.category}
                 </span>
-                <span className="px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-300 bg-slate-900/80 backdrop-blur-md">
+                <span className="px-3 py-1 rounded-lg text-xs font-mono font-bold text-slate-200 bg-slate-900/80 backdrop-blur-md">
                   {activeIndex + 1} / {filteredDocs.length}
                 </span>
               </div>
 
               {/* Bottom Info Bar Overlay */}
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-4 flex items-center justify-between gap-4">
-                <div className="space-y-0.5">
-                  <h3 className="text-sm font-bold text-white leading-tight">
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent p-4 sm:p-5 flex items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <h3 className="text-base sm:text-lg font-black text-white leading-tight">
                     {currentDoc.title}
                   </h3>
                   {currentDoc.description && (
-                    <p className="text-xs text-slate-300 line-clamp-1">
+                    <p className="text-xs sm:text-sm text-slate-200 line-clamp-2 font-normal">
                       {currentDoc.description}
                     </p>
                   )}
-                  <span className="text-[10px] text-slate-400 block font-mono">
+                  <span className="text-xs text-slate-400 block font-mono font-medium">
                     Diunggah: {currentDoc.uploadedAt}
                   </span>
                 </div>
@@ -286,9 +286,9 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
                   <button
                     onClick={() => setPreviewZoomModal(true)}
                     title="Perbesar Layar Penuh"
-                    className="p-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-white transition-colors"
+                    className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white transition-colors"
                   >
-                    <ZoomIn className="w-4 h-4" />
+                    <ZoomIn className="w-5 h-5" />
                   </button>
                   <button
                     onClick={(e) => {
@@ -296,9 +296,9 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
                       setDocToDelete(currentDoc);
                     }}
                     title="Hapus Foto Ini"
-                    className="p-2 rounded-lg bg-rose-950/80 hover:bg-rose-900 text-rose-300 transition-colors"
+                    className="p-2.5 rounded-xl bg-rose-950/80 hover:bg-rose-900 text-rose-300 transition-colors"
                   >
-                    <Trash2 className="w-4 h-4" />
+                    <Trash2 className="w-5 h-5" />
                   </button>
                 </div>
               </div>
@@ -308,15 +308,15 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
                 <>
                   <button
                     onClick={() => setActiveIndex((prev) => (prev > 0 ? prev - 1 : filteredDocs.length - 1))}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={() => setActiveIndex((prev) => (prev < filteredDocs.length - 1 ? prev + 1 : 0))}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-6 h-6" />
                   </button>
                 </>
               )}
@@ -325,48 +325,48 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
 
           {/* Right: Document List & Thumbnail Gallery */}
           <div className="lg:col-span-4 space-y-3">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
+            <div className="flex items-center justify-between text-xs sm:text-sm font-extrabold text-slate-200">
               <span>Daftar Bukti Dokumen ({documents.length})</span>
               <button
                 onClick={() => setShowUploadModal(true)}
-                className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-[11px]"
+                className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-xs font-bold"
               >
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="w-4 h-4" />
                 <span>Tambah Foto</span>
               </button>
             </div>
 
             {/* Thumbnail Scrollable Grid */}
-            <div className="max-h-[360px] overflow-y-auto space-y-2 pr-1">
+            <div className="max-h-[380px] overflow-y-auto space-y-2.5 pr-1">
               {filteredDocs.map((doc, idx) => {
                 const isSelected = idx === activeIndex;
                 return (
                   <div
                     key={doc.id}
                     onClick={() => setActiveIndex(idx)}
-                    className={`p-2.5 rounded-xl cursor-pointer transition-all flex items-center justify-between gap-3 border ${
+                    className={`p-3 rounded-2xl cursor-pointer transition-all flex items-center justify-between gap-3 border ${
                       isSelected
-                        ? 'bg-blue-600/20 border-blue-500/60 shadow-md'
-                        : 'bg-slate-800/40 border-slate-700/60 hover:bg-slate-800/80'
+                        ? 'bg-blue-600/25 border-blue-500/80 shadow-lg'
+                        : 'bg-slate-800/50 border-slate-700/70 hover:bg-slate-800/90'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="flex items-center gap-3 min-w-0">
                       <img
                         src={doc.imageUrl}
                         alt={doc.title}
                         referrerPolicy="no-referrer"
-                        className="w-12 h-12 object-cover rounded-lg bg-slate-950 shrink-0 border border-slate-700"
+                        className="w-14 h-14 object-cover rounded-xl bg-slate-950 shrink-0 border border-slate-700"
                       />
                       <div className="min-w-0">
                         <div className="flex items-center gap-1">
-                          <span className="text-[10px] font-semibold text-blue-400 uppercase tracking-wider truncate">
+                          <span className="text-xs font-bold text-blue-400 uppercase tracking-wider truncate">
                             {doc.category}
                           </span>
                         </div>
-                        <h4 className="text-xs font-bold text-white truncate mt-0.5">
+                        <h4 className="text-sm font-black text-white truncate mt-0.5">
                           {doc.title}
                         </h4>
-                        <p className="text-[10px] text-slate-400 truncate mt-0.5">
+                        <p className="text-xs text-slate-400 truncate mt-0.5 font-medium">
                           {doc.uploadedAt}
                         </p>
                       </div>
@@ -378,9 +378,9 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
                         setDocToDelete(doc);
                       }}
                       title="Hapus foto ini"
-                      className="p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-950/40 transition-colors shrink-0"
+                      className="p-2 rounded-xl text-slate-400 hover:text-rose-400 hover:bg-rose-950/40 transition-colors shrink-0"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 );
@@ -406,29 +406,38 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
 
       {/* Upload Modal */}
       {showUploadModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <Upload className="w-5 h-5 text-blue-400" />
-                <h3 className="text-base font-bold text-white">Unggah Foto Dokumen RTM (Tersimpan ke Firebase)</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm animate-in fade-in">
+          <div className="w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[92vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                  <Upload className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                    Unggah Foto Dokumen RTM
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+                    Tersinkronisasi otomatis dengan Firebase Firestore
+                  </p>
+                </div>
               </div>
               <button
                 onClick={() => {
                   setShowUploadModal(false);
                   setPreviewImage(null);
                 }}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-5 text-sm sm:text-base">
               {/* File Dropzone */}
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
-                  Pilih File Foto (PNG, JPG, WebP)
+                <label className="block text-slate-200 font-semibold text-sm sm:text-base mb-2">
+                  1. Pilih File Foto (PNG, JPG, WebP)
                 </label>
                 <input
                   type="file"
@@ -439,24 +448,28 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
                 />
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="border-2 border-dashed border-slate-700 hover:border-blue-500 rounded-xl p-4 text-center cursor-pointer transition-colors bg-slate-950/40"
+                  className="border-2 border-dashed border-slate-700 hover:border-blue-500 rounded-2xl p-6 text-center cursor-pointer transition-colors bg-slate-950/40 hover:bg-slate-950/60"
                 >
                   {previewImage ? (
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <img
                         src={previewImage}
                         alt="Preview"
-                        className="max-h-40 mx-auto object-contain rounded-lg border border-slate-700"
+                        className="max-h-56 mx-auto object-contain rounded-xl border border-slate-700 shadow-lg"
                       />
-                      <span className="text-[11px] text-blue-400 font-semibold block">
-                        Klik untuk mengganti foto
+                      <span className="text-xs sm:text-sm text-blue-400 font-semibold inline-block px-3 py-1 bg-blue-500/10 rounded-full border border-blue-500/20">
+                        Klik untuk mengganti foto dokumen
                       </span>
                     </div>
                   ) : (
-                    <div className="space-y-1.5 py-4">
-                      <Upload className="w-8 h-8 text-slate-500 mx-auto" />
-                      <p className="text-slate-300 font-medium">Klik untuk memilih foto dokumen</p>
-                      <p className="text-[11px] text-slate-500">Mendukung foto berkas fisik, daftar hadir, LK SPMI</p>
+                    <div className="space-y-2.5 py-6">
+                      <Upload className="w-12 h-12 text-blue-400/80 mx-auto" />
+                      <p className="text-slate-200 font-semibold text-base sm:text-lg">
+                        Klik untuk memilih foto dokumen
+                      </p>
+                      <p className="text-xs sm:text-sm text-slate-400">
+                        Mendukung foto berkas fisik, daftar hadir, LK SPMI, dan dokumentasi rapat
+                      </p>
                     </div>
                   )}
                 </div>
@@ -464,27 +477,27 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
 
               {/* Title Input */}
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
-                  Judul Foto Dokumen
+                <label className="block text-slate-200 font-semibold text-sm sm:text-base mb-2">
+                  2. Judul Foto Dokumen
                 </label>
                 <input
                   type="text"
                   value={uploadTitle}
                   onChange={(e) => setUploadTitle(e.target.value)}
                   placeholder="Contoh: Bukti Pengesahan RKT 2026 atau Daftar Hadir RTM"
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white text-sm sm:text-base placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                 />
               </div>
 
               {/* Category Select */}
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
-                  Kategori Dokumen
+                <label className="block text-slate-200 font-semibold text-sm sm:text-base mb-2">
+                  3. Kategori Dokumen
                 </label>
                 <select
                   value={uploadCategory}
                   onChange={(e) => setUploadCategory(e.target.value as DocumentPhoto['category'])}
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                 >
                   <option value="Dokumen LK-02 / RKT">Dokumen LK-02 / RKT</option>
                   <option value="Daftar Hadir Sidang">Daftar Hadir Sidang</option>
@@ -496,36 +509,37 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
 
               {/* Description Input */}
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
-                  Keterangan / Catatan Dokumen (Opsional)
+                <label className="block text-slate-200 font-semibold text-sm sm:text-base mb-2">
+                  4. Keterangan / Catatan Dokumen (Opsional)
                 </label>
                 <textarea
                   value={uploadDescription}
                   onChange={(e) => setUploadDescription(e.target.value)}
-                  rows={2}
+                  rows={3}
                   placeholder="Keterangan singkat tentang foto dokumen..."
-                  className="w-full px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white text-sm sm:text-base placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                 />
               </div>
             </div>
 
             {/* Modal Actions */}
-            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-800">
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
               <button
                 onClick={() => {
                   setShowUploadModal(false);
                   setPreviewImage(null);
                 }}
-                className="px-4 py-2 rounded-xl text-slate-400 hover:text-white text-xs font-semibold"
+                className="px-5 py-3 rounded-xl text-slate-400 hover:text-white text-sm sm:text-base font-semibold transition-colors"
               >
                 Batal
               </button>
               <button
                 onClick={handleSaveUpload}
                 disabled={!previewImage}
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white text-xs font-semibold transition-all shadow-md"
+                className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-40 text-white text-sm sm:text-base font-bold transition-all shadow-xl hover:shadow-blue-500/25 flex items-center gap-2"
               >
-                Simpan ke Firebase &amp; Tampilkan di Slide
+                <Upload className="w-5 h-5" />
+                <span>Simpan ke Firebase &amp; Tampilkan di Slide</span>
               </button>
             </div>
           </div>
@@ -556,25 +570,27 @@ export const DocumentPhotoSlide: React.FC<DocumentPhotoSlideProps> = ({ onBackTo
 
       {/* In-App Delete Confirmation Dialog (No window.confirm!) */}
       {docToDelete && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in">
-          <div className="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl p-5 shadow-2xl space-y-4">
-            <div className="flex items-center gap-2.5 text-rose-400 font-bold text-sm">
-              <Trash2 className="w-5 h-5 shrink-0" />
-              <span>Konfirmasi Hapus Foto Dokumen</span>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm animate-in fade-in">
+          <div className="w-full max-w-md bg-slate-900 border border-slate-700 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5">
+            <div className="flex items-center gap-3 text-rose-400 font-bold text-base sm:text-lg">
+              <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400">
+                <Trash2 className="w-6 h-6 shrink-0" />
+              </div>
+              <span>Konfirmasi Hapus Foto</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               Apakah Anda yakin ingin menghapus foto dokumen <strong className="text-white font-semibold">"{docToDelete.title}"</strong>? Foto ini akan langsung dihapus dari Firebase dan galeri dokumen RTM.
             </p>
-            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800 text-xs">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800 text-sm">
               <button
                 onClick={() => setDocToDelete(null)}
-                className="px-3.5 py-2 rounded-xl text-slate-400 hover:text-white font-semibold transition-colors"
+                className="px-4 py-2.5 rounded-xl text-slate-300 hover:text-white font-semibold transition-colors"
               >
                 Batal
               </button>
               <button
                 onClick={confirmDelete}
-                className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold shadow-md transition-all"
+                className="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold shadow-lg transition-all"
               >
                 Ya, Hapus Foto
               </button>
